@@ -189,8 +189,6 @@ export default {
                 type: "post",
                 data: {
                     title: botadd.title,
-                    description: botadd.description,
-                    content: botadd.content,
                     name: botadd.name,
                     surname: botadd.surname,
                     sex: botadd.sex,
@@ -204,14 +202,12 @@ export default {
                 success(resp) {
                     if (resp.error_message === "success") {
                         botadd.title = "";
-                        botadd.description = "";
-                        // botadd.content = "";
-                        // botadd.name = "";
-                        // botadd.surname = "";
-                        // botadd.sex = "";
-                        // botadd.address = "";
-                        // botadd.phone = "";
-                        // botadd.email = "";
+                        botadd.name = "";
+                        botadd.surname = "";
+                        botadd.sex = "";
+                        botadd.address = "";
+                        botadd.phone = "";
+                        botadd.email = "";
                         Modal.getInstance("#add-bot-btn").hide();
                         refresh_bots();
                     } else {
@@ -229,8 +225,6 @@ export default {
                 data: {
                     bot_id: bot.id,
                     title: bot.title,
-                    description: bot.description,
-                    content: bot.content,
                     name: bot.name,
                     surname: bot.surname,
                     sex: bot.sex,

@@ -42,8 +42,6 @@ public class UpdateServiceImpl implements UpdateService {
         String email = data.get("email");
 
         String title = data.get("title");
-        String content = data.get("content");
-        String description = data.get("description");
 
         Map<String, String> map = new HashMap<>();
 
@@ -91,8 +89,6 @@ public class UpdateServiceImpl implements UpdateService {
                 phone,
                 email,
                 title,
-                description,
-                content,
                 bot.getCreatetime(),
                 new Date()
 

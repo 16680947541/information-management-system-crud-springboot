@@ -40,8 +40,6 @@ public class AddServiceImpl implements AddService {
         String email = data.get("email");
 
         String title = data.get("title");
-        String content = data.get("content");
-        String description = data.get("description");
 
         Map<String, String> map = new HashMap<>();
         if (name.length() > 100) {
@@ -77,8 +75,6 @@ public class AddServiceImpl implements AddService {
                phone,
                email,
                 title,
-                content,
-                description,
                 now,
                 now
                );
