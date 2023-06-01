@@ -40,6 +40,11 @@ public class UpdateServiceImpl implements UpdateService {
         String phone = data.get("phone");
 
         String email = data.get("email");
+
+        String title = data.get("title");
+        String content = data.get("content");
+        String description = data.get("description");
+
         Map<String, String> map = new HashMap<>();
 
 
@@ -51,7 +56,7 @@ public class UpdateServiceImpl implements UpdateService {
             map.put("error_message", "surname长度不能大于100");
         }
         if (sex.length() > 5) {
-            map.put("error_message", "sex长度不能大于100");
+            map.put("error_message", "sex长度不能大于5");
             return map;
         }
         if (address.length() > 100) {
@@ -77,14 +82,20 @@ public class UpdateServiceImpl implements UpdateService {
             return map;
         }
 
-        Bot new_bot = new Bot(null,
+        Bot new_bot = new Bot(bot.getId(),
                 user.getId(),
                 name,
                 surname,
                 sex,
                 address,
                 phone,
-                email
+                email,
+                title,
+                description,
+                content,
+                bot.getCreatetime(),
+                new Date()
+
         );
         botMapper.updateById(new_bot);
         map.put("error_message", "success");

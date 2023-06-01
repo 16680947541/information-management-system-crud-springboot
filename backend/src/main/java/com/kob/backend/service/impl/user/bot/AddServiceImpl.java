@@ -10,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +39,10 @@ public class AddServiceImpl implements AddService {
 
         String email = data.get("email");
 
+        String title = data.get("title");
+        String content = data.get("content");
+        String description = data.get("description");
+
         Map<String, String> map = new HashMap<>();
         if (name.length() > 100) {
             map.put("error_message", "name长度不能大于100");
@@ -47,7 +52,7 @@ public class AddServiceImpl implements AddService {
             map.put("error_message", "surname长度不能大于100");
         }
         if (sex.length() > 5) {
-            map.put("error_message", "sex长度不能大于100");
+            map.put("error_message", "sex长度不能大于5");
             return map;
         }
         if (address.length() > 100) {
@@ -62,6 +67,7 @@ public class AddServiceImpl implements AddService {
             map.put("error_message", "email长度不能大于100");
             return map;
         }
+        Date now = new Date();
         Bot bot = new Bot(null,
                user.getId(),
                name,
@@ -69,7 +75,12 @@ public class AddServiceImpl implements AddService {
                sex,
                address,
                phone,
-               email
+               email,
+                title,
+                content,
+                description,
+                now,
+                now
                );
 
         botMapper.insert(bot);
