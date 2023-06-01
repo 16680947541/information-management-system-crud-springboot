@@ -10,7 +10,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,48 +26,54 @@ public class AddServiceImpl implements AddService {
 
         User user = loginUser.getUser();
 
-        String title = data.get("title");
-        String description = data.get("description");
-        String content = data.get("content");
+        String name = data.get("name");
+
+        String surname = data.get("surname");
+
+        String sex = data.get("sex");
+
+        String address = data.get("address");
+
+        String phone = data.get("phone");
+
+        String email = data.get("email");
 
         Map<String, String> map = new HashMap<>();
-
-        if (title == null || title.length() == 0) {
-            map.put("error_message", "标题不能为空");
+        if (name.length() > 100) {
+            map.put("error_message", "name长度不能大于100");
             return map;
         }
-
-        if (title.length() > 100) {
-            map.put("error_message", "标题长度不能大于100");
+        if (surname.length() > 100) {
+            map.put("error_message", "surname长度不能大于100");
+        }
+        if (sex.length() > 5) {
+            map.put("error_message", "sex长度不能大于100");
             return map;
         }
-
-        if (description == null || description.length() == 0) {
-            description = "这个用户...，什么也没留下~";
-        }
-
-        if (description.length() > 300) {
-            map.put("error_message", "Bot描述的长度不能大于300");
+        if (address.length() > 100) {
+            map.put("error_message", "address长度不能大于100");
             return map;
         }
-
-        if (content == null || content.length() == 0) {
-            map.put("error_message", "代码不能为空");
+        if (phone.length() > 100) {
+            map.put("error_message", "phone长度不能大于100");
             return map;
         }
-
-        if (content.length() > 10000) {
-            map.put("error_message", "代码长度不能超过10000");
+        if (email.length() > 100) {
+            map.put("error_message", "email长度不能大于100");
             return map;
         }
-
-        Date now = new Date();
-        Bot bot = new Bot(null, user.getId(), title, description, content, 1500, now, now);
+        Bot bot = new Bot(null,
+               user.getId(),
+               name,
+               surname,
+               sex,
+               address,
+               phone,
+               email
+               );
 
         botMapper.insert(bot);
         map.put("error_message", "success");
-
         return map;
-
     }
 }

@@ -3,12 +3,10 @@ package com.kob.backend.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -17,13 +15,12 @@ public class Bot {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
+
     private Integer userId;
-    private String title;
-    private String description;
-    private String content;
-    private Integer rating;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createtime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date modifytime;
+    private String name;
+    private String surname;
+    private String sex;
+    private String address;
+    private String phone;
+    private String email;
 }
