@@ -1,6 +1,6 @@
 #### 一个简简单单的项目
 
-使用 SpringBoot + MySQL + MyBatisPlus
+#### 使用 SpringBoot + MySQL + MyBatisPlus + Vue3
 
 创建 SQL 语句
 
