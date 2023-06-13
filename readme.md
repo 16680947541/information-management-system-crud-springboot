@@ -33,3 +33,6 @@ create table kthomework.user
 
 ```
 
+如果没有用过 Vue， 需要先下载 node  和 npm，完成后克隆项目，在 web 文件夹下
+
+执行 npm install , 下载完成后， vue ui 启动。 
